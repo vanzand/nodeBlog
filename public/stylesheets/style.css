@@ -1,0 +1,25 @@
+body {
+  font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
+  font-size: 1.6rem;
+}
+
+a{
+  text-decoration: none;
+  vertical-align: baseline;
+  transition: all 0.2s ease 0s;
+}
+
+a:hover{
+  color: #51ADED;
+  text-decoration: none;
+}
+
+.form-signin {
+  margin: 50px auto;
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin input{
+  margin-bottom: 10px;
+}
