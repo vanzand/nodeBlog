@@ -20,6 +20,19 @@ a:hover{
   padding: 15px;
 }
 
+.form-signin h1{
+  text-align: center;
+}
+
 .form-signin input{
   margin-bottom: 10px;
+}
+
+.navbar-blue {
+  background-color: #00A4E4;
+  border-color: #00A4E4;
+}
+
+.navbar-blue a {
+  color: #ffffff;
 }

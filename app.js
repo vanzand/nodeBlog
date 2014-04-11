@@ -32,4 +32,5 @@ routes(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+  //看是否已经初始化管理员，若未初始化则进行初始化操作
 });
