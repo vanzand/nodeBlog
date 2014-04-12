@@ -2,7 +2,6 @@
 <html lang="zh-cn">
   <head>
     <meta  http-equiv="content-type" content="text/html; charset=utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- 通知 IE 采用其所支持的最新的模式 -->
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta charset="UTF-8" >
@@ -24,15 +23,23 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">范子冬的个人网站</a>
+                <a class="navbar-brand" href="/">首页</a>
               </div>
 
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <li class="active"><a href="#">编程</a></li>
-                  <li><a href="#">读书</a></li>
-                  <li><a href="#">关于我</a></li>
+                  <li class="active"><a href="/post">发布文章</a></li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理<b class="caret"></b></a>
+                    <ul class="dropdown-menu dropdown-menu-blue">
+                      <li><a href="/setting/baseInfo">修改资料</a></li>
+                      <% if(user.name === 'admin'){%>
+                      <li><a href="/userList">用户管理</a></li>
+                      <% } %>
+                    </ul>
+                  </li>
+                  <li><a href="/logout">退出</a></li>
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div>

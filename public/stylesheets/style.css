@@ -1,6 +1,7 @@
 body {
   font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
   font-size: 1.6rem;
+  background: none repeat scroll 0 0 #E6E6E6;
 }
 
 a{
@@ -35,4 +36,47 @@ a:hover{
 
 .navbar-blue a {
   color: #ffffff;
+}
+
+.navbar-blue a:hover{
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.navbar-blue .navbar-toggle {
+    border-color: #00A4E4;
+}
+
+.navbar-blue .navbar-toggle:hover {
+    background-color: #5DC8EF;
+}
+
+.navbar-blue .navbar-toggle .icon-bar {
+    background-color: #FFFFFF;
+}
+
+article.post{
+  background: none repeat scroll 0 0 #ffffff;
+  box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3); 
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.dropdown-menu-blue{
+  padding: 0;
+}
+.dropdown-menu-blue > li > a{
+  color: #ffffff;
+  background-color: #00A4E4;
+  border-color: #00A4E4;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.nav-tabs{
+  margin-bottom: 20px;
+}
+
+.form-horizontal input{
+  display: inline-block;
 }

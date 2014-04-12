@@ -1,0 +1,28 @@
+<%- include mgtHeader %>
+  <div class="contianer">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <article class="post">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>用户名</th>
+                <th>邮箱</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+            <% users.forEach(function (user, index){ %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><a href="/deleteUser?name:<%= user.name %>">删除</a></td>
+              </tr>
+            <% })%>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </div>
+  </div>
+<%- include footer %>
