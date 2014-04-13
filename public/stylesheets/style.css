@@ -62,6 +62,12 @@ article.post{
   margin-bottom: 30px;
 }
 
+.panel_head{
+  background-color: #F5F5F5;
+  box-shadow: 0 1px 0 #E0E0E0;
+  padding: 7px 10px;
+}
+
 .dropdown-menu-blue{
   padding: 0;
 }
@@ -77,6 +83,20 @@ article.post{
   margin-bottom: 20px;
 }
 
-.form-horizontal input{
+.dl-horizontal dt{
+  text-align: left;
+  width: 100px;
+  padding: 3px 0;
+}
+
+.dl-horizontal dd{
+  text-align: left;
+  margin-left: 100px;
+  padding: 3px 0;
+}
+
+.progress-div span{
+  float: left;
   display: inline-block;
+  width: 70px;
 }

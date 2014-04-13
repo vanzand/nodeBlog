@@ -1,10 +1,12 @@
 var db = require('./db.js');
 var markdown = require('markdown').markdown;
+var ObjectID = require('mongodb').ObjectID;
 
-function Post(name, title, content){
+function Post(name, title, content, tag){
   this.name = name;
   this.title = title;
   this.content = content;
+  this.tag = tag;
 }
 
 Post.prototype.save = function(callback){
@@ -23,6 +25,7 @@ Post.prototype.save = function(callback){
     name : this.name,
     title : this.title,
     content : this.content,
+    tag : this.tag,
     time : time
   };
   //打开数据库
@@ -88,6 +91,59 @@ Post.getTen = function(name, page, callback){
           callback(null, posts, total);
         })
       });
+    });
+  });
+}
+
+Post.getOne = function(_id, callback){
+  //打开数据库
+  db.open(function (err, db){
+    if(err){
+      return callback(err);
+    }
+    //读取post集合
+    db.collection('posts', function (err, collection){
+      if(err){
+        db.close();
+        return callback(err);
+      }
+      //找到指定id的文章
+      collection.findOne({
+        "_id": new ObjectID(_id)
+      }, function (err, post){
+        db.close();
+        if(err){
+          return callback(err);
+        }
+        post.content = markdown.toHTML(post.content);
+        callback(null, post);
+      });
+    });
+  });
+}
+
+Post.get = function (query, callback){
+  db.open(function (err, db){
+    if(err){
+      return callback(err);
+    }
+    db.collection('posts', function (err, collection){
+      if(err){
+        db.close();
+        return callback(err);
+      }
+      collection.find(query).sort({
+        time : -1
+      }).toArray(function (err, posts){
+        db.close();
+        if(err){
+          callback(err);  
+        }
+        posts.forEach(function(post){
+          post.content = markdown.toHTML(post.content);
+        });
+        callback(null, posts);
+      })
     });
   });
 }

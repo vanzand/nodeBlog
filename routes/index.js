@@ -63,6 +63,8 @@ module.exports = function(app){
 
   app.get('/management', checkLogin);
   app.get('/management', function (req, res){
+    //admin可以获取所有文章，其余用户可以看到自己的所有文章,每次最多展示10篇
+    //
     res.render('management', {
       title : '管理',
       user : req.session.user,
@@ -92,7 +94,7 @@ module.exports = function(app){
   app.post('/post', function (req, res){
     console.log(req.session.user.name);
     var currentUser = req.session.user,
-      post = new Post(currentUser.name, req.body.title, req.body.content);
+      post = new Post(currentUser.name, req.body.title, req.body.content, req.body.tag);
     post.save(function(err){
       if(err){
         req.flash('error', '发布文章失败！')
@@ -102,6 +104,48 @@ module.exports = function(app){
       res.redirect('/');
     });
   });
+
+  app.get('/p/:_id', function (req, res){
+    Post.getOne(req.params._id, function (err, post){
+      if(err){
+        req.flash('error', err);
+        return res.redirect('/');
+      }
+      console.log('找到对应文章');
+      req.flash('success', '找到对应文章');
+      res.render('article', {
+        title : post.title,
+        user : req.session.user,
+        post : post,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      })
+    });
+  });
+
+  app.get('/tag/:tagId', function (req, res){
+    Post.get({
+      tag : req.params.tagId
+    }, function (err, posts){
+      if(err){
+        req.flash('error', err);
+        return res.redirect('/');
+      }
+      res.render('index', {
+        title : req.params.tagId,
+        user : req.session.user,
+        posts : posts,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      })
+    });
+  });
+
+  app.get('/about', function (req, res){
+    res.render('about', {
+      title : '关于我'
+    })
+  })
 
   app.get('/setting/baseInfo', checkLogin);
   app.get('/setting/baseInfo', function (req, res){
@@ -186,6 +230,50 @@ module.exports = function(app){
         error : req.flash('error').toString()
       });
     });
+  });
+
+  app.get('/addUser', checkLogin);
+  app.get('/addUser', function (req, res){
+    res.render('addUser', {
+      title : '添加用户',
+      user : req.session.user,
+      success : req.flash('success').toString(),
+      error : req.flash('error').toString()
+    });
+  });
+
+  app.post('/addUser', checkLogin);
+  app.post('/addUser', function (req, res){
+    var username = req.body.username,
+      password = req.body.password,
+      confirm_password = req.body.confirm_password,
+      email = req.body.email;
+    //判断该用户是否已经存在
+    User.get(username, function (err, user){
+      if(user){
+        req.flash('error', '该用户名已经被使用');
+        return res.redirect('back');
+      }
+      if(password !== confirm_password){
+        req.flash('error', '两次输入密码不一致');
+        return res.redirect('back');
+      }
+      var md5 = crypto.createHash('md5'),
+        password_md5 = md5.update(password).digest('hex');
+      var newUser = new User({
+        name : username,
+        password : password_md5,
+        email : email
+      });
+      newUser.save(function (err, user){
+        if(err){
+          req.flash('error', '添加用户失败！');
+          return res.redirect('back');
+        }
+        req.flash('success', '添加用户成功！')
+        res.redirect('/userList');
+      });
+    })
   });
 
   function checkLogin(req, res, next){

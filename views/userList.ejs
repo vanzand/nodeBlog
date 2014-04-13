@@ -14,13 +14,16 @@
             <tbody>
             <% users.forEach(function (user, index){ %>
               <tr>
+                <% if(user.name !== 'admin') {%>
                 <td><%= user.name %></td>
                 <td><%= user.email %></td>
-                <td><a href="/deleteUser?name:<%= user.name %>">删除</a></td>
+                <td><a href="/deleteUser?name=<%= user.name %>">删除</a></td>
+              	<% } %>
               </tr>
             <% })%>
             </tbody>
           </table>
+          <a href="/addUser" class="btn btn-primary">添加</a>
         </article>
       </div>
     </div>
