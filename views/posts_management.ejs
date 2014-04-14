@@ -1,0 +1,43 @@
+<%- include mgtHeader %>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        文章列表
+        <a class="btn btn-default" href="/management/addPost" style="float:right;margin-top: -5px;">发布文章</a>
+      </div>
+      <div class="penel-body">
+        <table class="table">
+          <tbody>
+            <% posts.forEach(function (post, index){ %>
+              <tr>
+                <td><a href="/management/p/<%= post._id %>"><%= post.title %></a></td>
+                <td><%= post.name %></td>
+                <td><%= post.time.minute %></td>
+                <td><a href="/management/deletePost?_id=<%= post._id %>">删除</a></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+        <ul class="pagination">
+          <% if (isFirstPage) {%>
+          <li class="disabled"><a href="javascript:;">&laquo;</a></li>
+          <% } else { %>
+          <li><a href="/management/posts?page=<%= (page-1) %>">&laquo;</a></li>
+          <% } %>
+          <% for(var i=1; i < totalPage; i++){ %>
+          <% if(page === i) {%>
+          <li class="active"><a href="/management/posts?page=<%= i %>"><%= i %></a></li>
+          <% } else { %>
+          <li><a href="/management/posts?page=<%= i %>"><%= i %></a></li>
+          <% } %>
+          <% } %>
+          <% if (isLastPage) {%>
+          <li class="disabled"><a href="javascript:;">&raquo;</a></li>
+          <% } else { %>
+          <li><a href="/management/posts?page=<%= (page+1) %>">&raquo;</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<%- include footer %>

@@ -27,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
+app.use(express.bodyParser({ keepExtensions: true, uploadDir: './public/images' }));
 app.use(express.session({
 	secret : setting.cookieSecret,
 	key : setting.db,

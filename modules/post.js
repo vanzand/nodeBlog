@@ -53,7 +53,7 @@ Post.prototype.save = function(callback){
   });
 }
 
-Post.getTen = function(name, page, callback){
+Post.getTen = function(query, page, callback){
   //打开数据库
   db.open(function (err, db){
     if(err){
@@ -64,10 +64,6 @@ Post.getTen = function(name, page, callback){
       if(err){
         db.close();
         return callback(err);
-      }
-      var query = {};
-      if(name){
-        query.name = name;
       }
       //找到符合条件的文章总数，并找到指定的文章
       collection.count(query, function (err, total){
@@ -87,6 +83,10 @@ Post.getTen = function(name, page, callback){
           }
           posts.forEach(function(post){
             post.content = markdown.toHTML(post.content);
+            //获取文章的摘要
+            post.excerpt = post.content.substr(0, 500);
+            var lastP = post.excerpt.lastIndexOf('</p>');
+            post.excerpt = post.excerpt.substr(0, lastP);
           });
           callback(null, posts, total);
         })

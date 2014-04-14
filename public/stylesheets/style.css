@@ -1,5 +1,5 @@
 body {
-  font-family: "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
+  font-family: "jubilat", "Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","微软雅黑","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
   font-size: 1.6rem;
   background: none repeat scroll 0 0 #E6E6E6;
 }
@@ -62,6 +62,15 @@ article.post{
   margin-bottom: 30px;
 }
 
+article.post span.label{
+  float: right;
+  margin-right: 5px;
+}
+
+.label a{
+  color: #ffffff;
+}
+
 .panel_head{
   background-color: #F5F5F5;
   box-shadow: 0 1px 0 #E0E0E0;
@@ -99,4 +108,43 @@ article.post{
   float: left;
   display: inline-block;
   width: 70px;
+}
+
+footer{
+  background-color: #ffffff;
+  box-shadow: 0 2px -6px rgba(100, 100, 100, 0.3); 
+}
+
+#gotop{ 
+  display:block;  
+  width:60px; 
+  height:60px;
+  position:fixed;  
+  bottom:50px;  
+  right:40px; 
+  border-radius:10px 10px 10px 10px;   
+  text-decoration:none;  
+  display:none;  
+  background-color:#999999;     
+}
+
+#gotop span{ 
+  display:block; 
+  width:60px; 
+  color:#dddddd; 
+  font-size:40px; 
+  text-align:center; 
+} 
+
+#gotop span:hover{ 
+  color:#cccccc; 
+} 
+
+.edit-article{
+  vertical-align: middle;
+}
+
+.edit-article a{
+  float: right;
+  margin-right: 10px;
 }

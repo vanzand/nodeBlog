@@ -3,11 +3,12 @@
       <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
           <article class="post">
-          	<p><h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2></p>
-            <p class="info">
-              作者：<a href="#"><%= post.name %></a> | 
-              日期：<%= post.time.minute %>
-            </p>
+            <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+            <div class="meta">
+              <time><%= post.time.minute %></time>
+              <span class="label label-success"><a href="#">3人评论</a></span>
+              <span class="label label-success">10人阅读</span>
+            </div>
             <p><%- post.content %></p>
           </article>
         </div>

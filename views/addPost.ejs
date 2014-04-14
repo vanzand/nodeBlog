@@ -1,10 +1,11 @@
 <%- include mgtHeader %>
-
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
-          <article class="post">
-            <form role="form" method="post">
+         <div class="panel panel-default">
+           <div class="panel-heading">发布文章</div>
+           <div class="panel-body">
+             <form role="form" method="post">
               <div class="form-group">
                 <label>标题</label>
                 <input name="title" type="text" class="form-control" placeHolder="请输入文章标题">
@@ -23,7 +24,8 @@
               <button class="btn btn-default">预览</button>
               <button type="submit" class="btn btn-primary">发布</button>
             </form>
-          </article>
+           </div>
+         </div>
         </div>
       </div>
     </div>

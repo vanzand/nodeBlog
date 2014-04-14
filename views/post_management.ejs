@@ -1,0 +1,21 @@
+<%- include mgtHeader %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <article class="post">
+          <div class="edit-article">
+            <h1 style="display:inline-block;"><%= post.title %></h1>
+            <a class="btn btn-danger" href="/management/deletePost?_id=<%= post._id %>">删除</a>
+            <a class="btn btn-primary" href="/management/editPost?_id=<%= post._id %>">编辑</a>
+          </div>
+          <div class="meta">
+            <time><%= post.time.minute %></time>
+            <span class="label label-success"><a href="#">3人评论</a></span>
+            <span class="label label-success">10人阅读</span>
+          </div>
+          <p><%- post.content %></p>
+        </article>
+      </div>
+    </div>
+  </div>
+<%- include footer %>

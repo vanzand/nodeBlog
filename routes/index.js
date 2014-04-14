@@ -1,12 +1,19 @@
 var crypto =  require('crypto');
 var User = require('../modules/user.js');
 var Post = require('../modules/post.js');
+var fs = require('fs');
 
 module.exports = function(app){
   app.get('/', function (req, res){
-    var page = req.query.p ? parseInt(req.query.p) : 1;
+    var page = req.query.p ? parseInt(req.query.p) : 1,
+      tag = req.query.tag || null,
+      query = {};
 
-    Post.getTen(null, page, function (err, posts, total){
+    if(tag && tag.toLowerCase() != 'null'){
+      query.tag = tag;
+    }
+
+    Post.getTen(query, page, function (err, posts, total){
       if(err){
         posts = [];
       }
@@ -14,6 +21,7 @@ module.exports = function(app){
         title:'范子冬的个人博客',
         posts : posts,
         page : page,
+        tag : tag,
         isFirstPage : page === 1,
         isLastPage : (page - 1) * 10 + posts.length === total,
         user : req.session.user,
@@ -64,12 +72,84 @@ module.exports = function(app){
   app.get('/management', checkLogin);
   app.get('/management', function (req, res){
     //admin可以获取所有文章，其余用户可以看到自己的所有文章,每次最多展示10篇
-    //
-    res.render('management', {
-      title : '管理',
+    var page = req.query.p ? parseInt(req.query.p) : 1,
+      currentUserName = req.session.user.name,
+      query = {};
+    if(currentUserName !== 'admin'){
+      query.name = currentUserName;
+    }
+    Post.getTen(query, page, function (err, posts, total){
+      if(err){
+        req.flash('error', err);
+        return res.redirect('back');
+      }
+      res.render('management', {
+        title:'范子冬的个人博客',
+        posts : posts,
+        page : page,
+        isFirstPage : page === 1,
+        isLastPage : (page - 1) * 10 + posts.length === total,
+        user : req.session.user,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      });
+    });
+  });
+
+  app.get('/management/posts', checkLogin);
+  app.get('/management/posts', function (req, res){
+    //admin可以获取所有文章，其余用户可以看到自己的所有文章,每次最多展示10篇
+    var page = req.query.page ? parseInt(req.query.page) : 1,
+      currentUserName = req.session.user.name,
+      query = {};
+    if(currentUserName !== 'admin'){
+      query.name = currentUserName;
+    }
+    Post.getTen(query, page, function (err, posts, total){
+      if(err){
+        req.flash('error', err);
+        return res.redirect('back');
+      }
+      console.log(total);
+      res.render('posts_management', {
+        title:'文章管理',
+        posts : posts,
+        page : page,
+        isFirstPage : page === 1,
+        isLastPage : (page - 1) * 10 + posts.length === total,
+        totalPage : total/10+1,
+        user : req.session.user,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      });
+    });
+  });
+
+  app.get('/management/addPost', checkLogin);
+  app.get('/management/addPost', function (req, res){
+    res.render('addPost', {
+      title : '发布文章',
       user : req.session.user,
       success : req.flash('success').toString(),
       error : req.flash('error').toString()
+    });
+  });
+
+  app.get('/management/p/:_id', checkLogin);
+  app.get('/management/p/:_id', function (req, res){
+    Post.getOne(req.params._id, function (err, post){
+      if(err){
+        req.flash('error', err);
+        return res.redirect('/management/posts');
+      }
+      req.flash('success', '找到对应文章');
+      res.render('post_management', {
+        title : post.title,
+        user : req.session.user,
+        post : post,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      })
     });
   });
 
@@ -77,17 +157,35 @@ module.exports = function(app){
   app.get('/logout', function (req, res){
     req.session.user = null;
     req.flash('success', '登出成功！');
-    res.redirect('/');
+    res.redirect('/login');
   });
 
-  app.get('/post', checkLogin);
-  app.get('/post', function (req, res){
-    res.render('post', {
-      title : '发布文章',
-      user : req.session.user,
-      success : req.flash('success').toString(),
-      error : req.flash('error').toString()
+  app.get('/upload', checkLogin);
+  app.get('/upload', function (req, res) {
+    res.render('upload', {
+      title: '文件上传',
+      user: req.session.user,
+      success: req.flash('success').toString(),
+      error: req.flash('error').toString()
     });
+  });
+
+  app.post('/upload', checkLogin);
+  app.post('/upload', function (req, res){
+    for(var i in req.files){
+      if (req.files[i].size == 0){
+        // 使用同步方式删除一个文件
+        fs.unlinkSync(req.files[i].path);
+        console.log('Successfully removed an empty file!');
+      } else {
+        var target_path = './public/images/' + req.files[i].name;
+        // 使用同步方式重命名一个文件
+        fs.renameSync(req.files[i].path, target_path);
+        console.log('Successfully renamed a file!');
+      }
+    }
+    req.flash('success', '文件上传成功!');
+    res.redirect('/upload');
   });
 
   app.post('/post', checkLogin);
@@ -101,7 +199,7 @@ module.exports = function(app){
         return res.redirect('/post');
       }
       req.flash('success', '发布文章成功!');
-      res.redirect('/');
+      res.redirect('/management');
     });
   });
 
@@ -117,24 +215,6 @@ module.exports = function(app){
         title : post.title,
         user : req.session.user,
         post : post,
-        success : req.flash('success').toString(),
-        error : req.flash('error').toString()
-      })
-    });
-  });
-
-  app.get('/tag/:tagId', function (req, res){
-    Post.get({
-      tag : req.params.tagId
-    }, function (err, posts){
-      if(err){
-        req.flash('error', err);
-        return res.redirect('/');
-      }
-      res.render('index', {
-        title : req.params.tagId,
-        user : req.session.user,
-        posts : posts,
         success : req.flash('success').toString(),
         error : req.flash('error').toString()
       })
