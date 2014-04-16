@@ -148,3 +148,16 @@ footer{
   float: right;
   margin-right: 10px;
 }
+
+.w200{
+  width: 200px;
+}
+
+.inline-bolck{
+  display: inline-block;
+}
+
+.post .img-thumbnail{
+  max-width: 300px;
+  max-height: 180px;
+}

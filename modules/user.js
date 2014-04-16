@@ -1,5 +1,6 @@
 var crypto = require('crypto');
 var db = require('./db');
+var ObjectID = require('mongodb').ObjectID;
 
 function User(user){
 	this.name = user.name;
@@ -129,6 +130,61 @@ User.update = function(user, callback){
 			});
 		});
 	});
+}
+
+User.isAdmin = function(_id, callback){
+	//打开数据库
+	db.open(function (err, db){
+		if(err){
+			return callback(err, false);
+		}
+		db.collection('users', function (err, collection){
+			if(err){
+				db.close();
+				return callback(err, false);
+			}
+			collection.findOne({
+				_id : new ObjectID(_id)
+			}, function (err, user){
+				db.close();
+				if(err){
+					return callback(err, false);
+				}
+				if(user && user.name==='admin'){
+					return callback(null, true);
+				}else{
+					return callback(null, false);
+				}
+			})
+		});
+	});
+}
+
+User.delete = function(_id, callback){
+  console.log('开始删除：' + _id);
+  db.open(function (err, db){
+    if(err){
+      return callback(err);
+    }
+    db.collection('users', function (err, collection){
+      if(err){
+        db.close();
+        return callback(err);
+      }
+      collection.remove({
+        _id : new ObjectID(_id)
+      }, {
+        w :1
+      }, function (err){
+        db.close();
+        if(err){
+          return  callback(err);
+        }
+        console.log('删除成功');
+        callback(null);
+      });
+    });
+  });
 }
 
 module.exports = User;

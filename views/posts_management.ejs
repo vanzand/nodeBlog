@@ -11,9 +11,12 @@
             <% posts.forEach(function (post, index){ %>
               <tr>
                 <td><a href="/management/p/<%= post._id %>"><%= post.title %></a></td>
-                <td><%= post.name %></td>
+                <td><%= post.username %></td>
                 <td><%= post.time.minute %></td>
-                <td><a href="/management/deletePost?_id=<%= post._id %>">删除</a></td>
+                <td>
+                  <input type="hidden" value="<%= post._id %>" />
+                  <button class="btn btn-danger deleteBtn" data-toggle="modal" data-target="#deleteModal" >删除</button>
+                </td>
               </tr>
             <% }); %>
           </tbody>
@@ -40,4 +43,53 @@
       </div>
     </div>
   </div>
-<%- include footer %>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">确认框</h4>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="postId" >
+          <p>确认删除该文章</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <a id="deleteConfirmBtn" href="" class="btn btn-primary">确认</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <footer>
+  </footer>
+
+  <a id="gotop" href="#">   
+    <span>▲</span> 
+  </a>
+
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+  $(function(){
+    $(window).scroll(function(){  //只要窗口滚动,就触发下面代码 
+      var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
+      if( scrollt >600 ){  //判断滚动后高度超过600px,就显示  
+        $("#gotop").fadeIn(400); //淡出     
+      }else{      
+        $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡入.必须加上stop()停止之前动画,否则会出现闪动   
+      }
+    });
+    $("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+        $("html,body").animate({scrollTop:"0px"},200);
+    });
+    $('.deleteBtn').bind('click', function(){
+      $('#deleteConfirmBtn').attr('href', '/management/deletePost?_id='+$(this).prev().val());
+    });
+  });
+  </script>
+</body>
+</html>

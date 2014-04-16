@@ -5,7 +5,7 @@
         <article class="post">
           <div class="edit-article">
             <h1 style="display:inline-block;"><%= post.title %></h1>
-            <a class="btn btn-danger" href="/management/deletePost?_id=<%= post._id %>">删除</a>
+            <a class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" id="deleteBtn" >删除</a>
             <a class="btn btn-primary" href="/management/editPost?_id=<%= post._id %>">编辑</a>
           </div>
           <div class="meta">
@@ -13,9 +13,28 @@
             <span class="label label-success"><a href="#">3人评论</a></span>
             <span class="label label-success">10人阅读</span>
           </div>
+          <img src="<%= post.titleImgPath %>">
           <p><%- post.content %></p>
         </article>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">确认框</h4>
+        </div>
+        <div class="modal-body">
+          <p>确认删除该文章</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <a id="deleteConfirmBtn" href="/management/deletePost?_id=<%= post._id %>" class="btn btn-primary">确认</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 <%- include footer %>

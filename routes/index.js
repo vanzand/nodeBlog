@@ -76,7 +76,7 @@ module.exports = function(app){
       currentUserName = req.session.user.name,
       query = {};
     if(currentUserName !== 'admin'){
-      query.name = currentUserName;
+      query.username = currentUserName;
     }
     Post.getTen(query, page, function (err, posts, total){
       if(err){
@@ -103,14 +103,13 @@ module.exports = function(app){
       currentUserName = req.session.user.name,
       query = {};
     if(currentUserName !== 'admin'){
-      query.name = currentUserName;
+      query.username = currentUserName;
     }
     Post.getTen(query, page, function (err, posts, total){
       if(err){
         req.flash('error', err);
         return res.redirect('back');
       }
-      console.log(total);
       res.render('posts_management', {
         title:'文章管理',
         posts : posts,
@@ -135,9 +134,114 @@ module.exports = function(app){
     });
   });
 
+  app.post('/management/addPost', checkLogin);
+  app.post('/management/addPost', function (req, res){
+    var post = {
+      username : req.session.user.name,
+      title : req.body.title,
+      category : req.body.category,
+      titleImgPath : '',
+      tags : [req.body.tag1, req.body.tag2, req.body.tag3],
+      content : req.body.content
+    };
+    for(var i in req.files){
+      if (req.files[i].size == 0){
+        // 使用同步方式删除一个文件
+        fs.unlinkSync(req.files[i].path);
+        console.log('Successfully removed an empty file!');
+      } else {
+        var target_path = './public/images/' + req.files[i].name;
+        // 使用同步方式重命名一个文件
+        fs.renameSync(req.files[i].path, target_path);
+        console.log('Successfully renamed a file!');
+        post.titleImgPath = '/images/' + req.files[i].name;
+      }
+      break;
+    }
+    var post = new Post(post);
+    post.save(function(err){
+      if(err){
+        req.flash('error', '发布文章失败！')
+        return res.redirect('/post');
+      }
+      req.flash('success', '发布文章成功!');
+      res.redirect('/management');
+    });
+    res.redirect('/management/posts');
+  });
+
+  app.get('/management/editPost', checkLogin);
+  app.get('/management/editPost', function (req, res){
+    var postId = req.query._id;
+    Post.getOne(postId, false, function (err, post){
+      if(err){
+        console.log('未找到相应文章');
+        req.flash('error', err);
+        return res.redirect('back');
+      }
+      res.render('editPost', {
+        title : '编辑文章',
+        post : post,
+        user : req.session.user,
+        success : req.flash('success').toString(),
+        error : req.flash('error').toString()
+      });
+    })
+  });
+
+  app.post('/management/editPost', checkLogin);
+  app.post('/management/editPost', function (req, res){
+    //查看题图有没有被修改
+    var titleImgPath = null,
+      post = {
+      username : req.session.user.name,
+      title : req.body.title,
+      category : req.body.category,
+      tags : [req.body.tag1, req.body.tag2, req.body.tag3],
+      content : req.body.content
+    };
+    for(var i in req.files){
+      if (req.files[i].size == 0){
+        // 使用同步方式删除一个文件
+        fs.unlinkSync(req.files[i].path);
+        console.log('Successfully removed an empty file!');
+      } else {
+        var target_path = './public/images/' + req.files[i].name;
+        // 使用同步方式重命名一个文件
+        fs.renameSync(req.files[i].path, target_path);
+        console.log('Successfully renamed a file!');
+        titleImgPath = '/images/' + req.files[i].name;
+      }
+      break;
+    }
+    if(titleImgPath){
+      post.titleImgPath = titleImgPath;
+    }
+    Post.update(req.body._id, post, function (err){
+      if(err){
+        console.log(err);
+        req.flash('error', '更新文章失败');
+        return res.redirect('back');
+      }
+      res.redirect('/management/p/'+req.body._id);
+    });
+  });
+
+  app.get('/management/deletePost', function (req, res){
+    var postId = req.query._id;
+    Post.delete(postId, function (err){
+      if(err){
+        console.log(err);
+        req.flash('error', '删除文章失败！');
+        return res.redirect('back');
+      }
+      res.redirect('/management/posts');
+    });
+  });
+
   app.get('/management/p/:_id', checkLogin);
   app.get('/management/p/:_id', function (req, res){
-    Post.getOne(req.params._id, function (err, post){
+    Post.getOne(req.params._id, true, function (err, post){
       if(err){
         req.flash('error', err);
         return res.redirect('/management/posts');
@@ -149,7 +253,7 @@ module.exports = function(app){
         post : post,
         success : req.flash('success').toString(),
         error : req.flash('error').toString()
-      })
+      });
     });
   });
 
@@ -160,51 +264,8 @@ module.exports = function(app){
     res.redirect('/login');
   });
 
-  app.get('/upload', checkLogin);
-  app.get('/upload', function (req, res) {
-    res.render('upload', {
-      title: '文件上传',
-      user: req.session.user,
-      success: req.flash('success').toString(),
-      error: req.flash('error').toString()
-    });
-  });
-
-  app.post('/upload', checkLogin);
-  app.post('/upload', function (req, res){
-    for(var i in req.files){
-      if (req.files[i].size == 0){
-        // 使用同步方式删除一个文件
-        fs.unlinkSync(req.files[i].path);
-        console.log('Successfully removed an empty file!');
-      } else {
-        var target_path = './public/images/' + req.files[i].name;
-        // 使用同步方式重命名一个文件
-        fs.renameSync(req.files[i].path, target_path);
-        console.log('Successfully renamed a file!');
-      }
-    }
-    req.flash('success', '文件上传成功!');
-    res.redirect('/upload');
-  });
-
-  app.post('/post', checkLogin);
-  app.post('/post', function (req, res){
-    console.log(req.session.user.name);
-    var currentUser = req.session.user,
-      post = new Post(currentUser.name, req.body.title, req.body.content, req.body.tag);
-    post.save(function(err){
-      if(err){
-        req.flash('error', '发布文章失败！')
-        return res.redirect('/post');
-      }
-      req.flash('success', '发布文章成功!');
-      res.redirect('/management');
-    });
-  });
-
   app.get('/p/:_id', function (req, res){
-    Post.getOne(req.params._id, function (err, post){
+    Post.getOne(req.params._id, true, function (err, post){
       if(err){
         req.flash('error', err);
         return res.redirect('/');
@@ -354,6 +415,32 @@ module.exports = function(app){
         res.redirect('/userList');
       });
     })
+  });
+
+  app.get('/management/deleteUser', checkLogin);
+  app.get('/management/deleteUser', function (req, res){
+    var currentUser = req.session.user,
+      deleteUserId = req.query._id;
+    User.isAdmin(currentUser._id, function(err, isAdmin){
+      if(isAdmin){
+        User.delete(deleteUserId, function(err){
+          if(err){
+            req.flash('error', '删除用户失败！');
+            return res.redirect('back');
+          }
+          req.flash('success', '删除用户成功！');
+          res.redirect('back');
+        });
+      }else{
+        req.flash('error', '您无权删除用户！');
+        return res.redirect('back');
+      }
+    });
+  });
+
+  //当无法匹配路径时，调用404页面
+  app.use(function (req, res){
+    res.render('404');
   });
 
   function checkLogin(req, res, next){

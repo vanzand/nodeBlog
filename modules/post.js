@@ -2,11 +2,13 @@ var db = require('./db.js');
 var markdown = require('markdown').markdown;
 var ObjectID = require('mongodb').ObjectID;
 
-function Post(name, title, content, tag){
-  this.name = name;
-  this.title = title;
-  this.content = content;
-  this.tag = tag;
+function Post(post){
+  this.username = post.username;
+  this.title = post.title;
+  this.category = post.category;
+  this.titleImgPath = post.titleImgPath;
+  this.content = post.content;
+  this.tags = post.tags;
 }
 
 Post.prototype.save = function(callback){
@@ -22,10 +24,12 @@ Post.prototype.save = function(callback){
   };
   //要存入数据库的文档
   var post = {
-    name : this.name,
+    username : this.username,
     title : this.title,
+    category : this.category,
+    titleImgPath : this.titleImgPath,
     content : this.content,
-    tag : this.tag,
+    tags : this.tags,
     time : time
   };
   //打开数据库
@@ -79,7 +83,7 @@ Post.getTen = function(query, page, callback){
         }).toArray(function (err, posts){
           db.close();
           if(err){
-            callback(err);  
+            return callback(err);  
           }
           posts.forEach(function(post){
             post.content = markdown.toHTML(post.content);
@@ -88,14 +92,14 @@ Post.getTen = function(query, page, callback){
             var lastP = post.excerpt.lastIndexOf('</p>');
             post.excerpt = post.excerpt.substr(0, lastP);
           });
-          callback(null, posts, total);
+          return callback(null, posts, total);
         })
       });
     });
   });
 }
 
-Post.getOne = function(_id, callback){
+Post.getOne = function(_id, changeToHtml, callback){
   //打开数据库
   db.open(function (err, db){
     if(err){
@@ -115,7 +119,9 @@ Post.getOne = function(_id, callback){
         if(err){
           return callback(err);
         }
-        post.content = markdown.toHTML(post.content);
+        if(changeToHtml===true){
+          post.content = markdown.toHTML(post.content);
+        }
         callback(null, post);
       });
     });
@@ -144,6 +150,61 @@ Post.get = function (query, callback){
         });
         callback(null, posts);
       })
+    });
+  });
+}
+
+Post.update = function(_id, post, callback){
+  //打开数据库
+  db.open(function (err, db){
+    if(err){
+      return callback(err);
+    }
+    //读取post集合
+    db.collection('posts', function (err, collection){
+      if(err){
+        db.close();
+        return callback(err);
+      }
+      //更新指定id的文章
+      collection.update({
+        _id : new ObjectID(_id)
+      }, {
+        $set : post
+      }, function (err){
+        db.close();
+        if(err){
+          return callback(err);
+        }
+        return callback(null);
+      });
+    });
+  });
+}
+
+Post.delete = function(_id, callback){
+  console.log('开始删除：' + _id);
+  db.open(function (err, db){
+    if(err){
+      return callback(err);
+    }
+    db.collection('posts', function (err, collection){
+      if(err){
+        db.close();
+        return callback(err);
+      }
+      collection.remove({
+        _id : new ObjectID(_id)
+      }, {
+        w :1
+      }, function (err){
+        db.close();
+        if(err){
+          return  callback(err);
+        }
+        console.log('删除成功');
+        callback(null);
+      });
     });
   });
 }
