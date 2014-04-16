@@ -6,11 +6,11 @@ var fs = require('fs');
 module.exports = function(app){
   app.get('/', function (req, res){
     var page = req.query.p ? parseInt(req.query.p) : 1,
-      tag = req.query.tag || null,
+      category = req.query.category || null,
       query = {};
 
-    if(tag && tag.toLowerCase() != 'null'){
-      query.tag = tag;
+    if(category && category.toLowerCase() != 'null'){
+      query.category = category;
     }
 
     Post.getTen(query, page, function (err, posts, total){
@@ -21,7 +21,7 @@ module.exports = function(app){
         title:'范子冬的个人博客',
         posts : posts,
         page : page,
-        tag : tag,
+        category : category,
         isFirstPage : page === 1,
         isLastPage : (page - 1) * 10 + posts.length === total,
         user : req.session.user,

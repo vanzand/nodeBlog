@@ -9,6 +9,7 @@ function Post(post){
   this.titleImgPath = post.titleImgPath;
   this.content = post.content;
   this.tags = post.tags;
+  this.pv = post.pv || 0;
 }
 
 Post.prototype.save = function(callback){
@@ -30,7 +31,8 @@ Post.prototype.save = function(callback){
     titleImgPath : this.titleImgPath,
     content : this.content,
     tags : this.tags,
-    time : time
+    time : time,
+    pv : 0
   };
   //打开数据库
   db.open(function (err, db){
@@ -115,14 +117,30 @@ Post.getOne = function(_id, changeToHtml, callback){
       collection.findOne({
         "_id": new ObjectID(_id)
       }, function (err, post){
-        db.close();
         if(err){
+          db.close();
           return callback(err);
         }
-        if(changeToHtml===true){
-          post.content = markdown.toHTML(post.content);
+        if(post){
+          //每次找到该文章，则加一次pv
+          collection.update({
+            "_id": new ObjectID(_id)
+          }, {
+            $inc: {"pv": 1}
+          }, function (err){
+            db.close();
+            if(err){
+              return callback(err);
+            }
+          });
+          if(changeToHtml===true){
+            post.content = markdown.toHTML(post.content);
+          }
+          callback(null, post);
+        }else{
+          callback(null, post);
         }
-        callback(null, post);
+        
       });
     });
   });

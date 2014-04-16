@@ -6,54 +6,20 @@
             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
             <div class="meta">
               <time><%= post.time.minute %></time>
-              <span class="label label-success"><a href="#">3人评论</a></span>
-              <span class="label label-success">10人阅读</span>
+              <span class="label label-success">
+                <a href="#comments"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+              </span>
+              <span class="label label-success"><%= post.pv || 0 %>人阅读</span>
             </div>
             <img src="<%= post.titleImgPath %>">
             <p><%- post.content %></p>
           </article>
 
-          <div data-thread-key="文章id" data-title="文章title" data-category="分类" data-author-key="作者id" class="ds-thread" id="ds-thread">
+          <div id="comments">
+          <%- include comment %>
+          </div>
         </div>
       </div>
     </div>
 
-    <footer>
-    </footer>
-
-    <a id="gotop" href="#">   
-      <span>▲</span> 
-    </a>
-
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-    $(function(){
-      $(window).scroll(function(){  //只要窗口滚动,就触发下面代码 
-        var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
-        if( scrollt >600 ){  //判断滚动后高度超过600px,就显示  
-          $("#gotop").fadeIn(400); //淡出     
-        }else{      
-          $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡入.必须加上stop()停止之前动画,否则会出现闪动   
-        }
-      });
-      $("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
-          $("html,body").animate({scrollTop:"0px"},200);
-      });
-    });
-    </script>
-
-    <script type="text/javascript">
-      var duoshuoQuery = {short_name:"你的二级域名"};
-      (function() {
-        var ds = document.createElement('script');
-        ds.type = 'text/javascript';ds.async = true;
-        ds.src = 'http://static.duoshuo.com/embed.js';
-        ds.charset = 'UTF-8';
-        (document.getElementsByTagName('head')[0] 
-        || document.getElementsByTagName('body')[0]).appendChild(ds);
-      })();
-    </script>
-  </body>
-</html>
+<%- include footer %>

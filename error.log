@@ -1,0 +1,24 @@
+[Wed Apr 16 2014 11:16:30 GMT+0800 (中国标准时间)] /p/534d19eb5c1e6f14191b49e3
+Error: db object already connecting, open cannot be called multiple times
+    at Db.open (E:\git-workspace\nodeBlog\node_modules\mongodb\lib\mongodb\db.js:257:11)
+    at Function.Post.getOne (E:\git-workspace\nodeBlog\modules\post.js:106:6)
+    at E:\git-workspace\nodeBlog\routes\index.js:268:10
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:135:11)
+    at pass (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:145:5)
+    at Router._dispatch (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:173:5)
+    at Object.router (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:33:10)
+    at next (E:\git-workspace\nodeBlog\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+[Wed Apr 16 2014 11:16:43 GMT+0800 (中国标准时间)] /p/534d19eb5c1e6f14191b49e3
+Error: db object already connecting, open cannot be called multiple times
+    at Db.open (E:\git-workspace\nodeBlog\node_modules\mongodb\lib\mongodb\db.js:257:11)
+    at Function.Post.getOne (E:\git-workspace\nodeBlog\modules\post.js:106:6)
+    at E:\git-workspace\nodeBlog\routes\index.js:268:10
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:135:11)
+    at pass (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:145:5)
+    at Router._dispatch (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:173:5)
+    at Object.router (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:33:10)
+    at next (E:\git-workspace\nodeBlog\node_modules\express\node_modules\connect\lib\proto.js:193:15)

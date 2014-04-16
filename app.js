@@ -13,6 +13,10 @@ var MongoStore = require('connect-mongo')(express);
 var flash = require('connect-flash');
 var User = require('./modules/user.js');
 var crypto = require('crypto');
+var fs = require('fs');
+//日志文件
+var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
 
 var app = express();
 
@@ -23,6 +27,7 @@ app.set('view engine', 'ejs');
 app.use(flash());	
 app.use(express.favicon());
 app.use(express.logger('dev'));
+app.use(express.logger({stream: accessLog}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -38,6 +43,12 @@ app.use(express.session({
 }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function (err, req, res, next) {
+  var meta = '[' + new Date() + '] ' + req.url + '\n';
+  errorLog.write(meta + err.stack + '\n');
+  next();
+});
 
 // development only
 if ('development' == app.get('env')) {
