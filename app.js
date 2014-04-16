@@ -17,6 +17,7 @@ var fs = require('fs');
 //日志文件
 var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
 var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -60,6 +61,7 @@ routes(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
+  mongoose.connect('mongodb://localhost/nodeBlog');
   //看是否已经初始化管理员，若未初始化则进行初始化操作
   User.get('admin', function (err, user){
   	if(user){

@@ -22,3 +22,539 @@ Error: db object already connecting, open cannot be called multiple times
     at Router._dispatch (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:173:5)
     at Object.router (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:33:10)
     at next (E:\git-workspace\nodeBlog\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+[Wed Apr 16 2014 14:34:43 GMT+0800 (中国标准时间)] /userList
+TypeError: Object #<Query> has no method 'toArray'
+    at Function.User.getAll (E:\git-workspace\nodeBlog\modules\user.js:59:5)
+    at E:\git-workspace\nodeBlog\routes\index.js:361:10
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+    at pass (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:145:5)
+    at nextRoute (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:100:7)
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:167:11)
+    at checkLogin (E:\git-workspace\nodeBlog\routes\index.js:451:5)
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+[Wed Apr 16 2014 14:35:00 GMT+0800 (中国标准时间)] /userList
+TypeError: Object #<Query> has no method 'toArray'
+    at Function.User.getAll (E:\git-workspace\nodeBlog\modules\user.js:59:5)
+    at E:\git-workspace\nodeBlog\routes\index.js:361:10
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+    at pass (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:145:5)
+    at nextRoute (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:100:7)
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:167:11)
+    at checkLogin (E:\git-workspace\nodeBlog\routes\index.js:451:5)
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+[Wed Apr 16 2014 14:36:45 GMT+0800 (中国标准时间)] /userList
+TypeError: Object #<Query> has no method 'toArray'
+    at Function.User.getAll (E:\git-workspace\nodeBlog\modules\user.js:60:5)
+    at E:\git-workspace\nodeBlog\routes\index.js:361:10
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+    at pass (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:145:5)
+    at nextRoute (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:100:7)
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:167:11)
+    at checkLogin (E:\git-workspace\nodeBlog\routes\index.js:451:5)
+    at callbacks (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:164:37)
+    at param (E:\git-workspace\nodeBlog\node_modules\express\lib\router\index.js:138:11)
+[Wed Apr 16 2014 15:11:23 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:13:14 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:13:36 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:13:58 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:22:31 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:23:05 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:24:12 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:24:53 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:26:04 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:30:38 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:31:50 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:35:12 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:36:10 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:42:20 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:45:33 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:45:56 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:55:07 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 15:55:44 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:02:19 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:03:02 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:03:53 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:04:41 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:09:23 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3622)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:12:05 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:2540)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)
+[Wed Apr 16 2014 16:12:30 GMT+0800 (中国标准时间)] /
+TypeError: E:\git-workspace\nodeBlog\views\index.ejs:10
+    8|             <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
+    9|             <div class="meta">
+ >> 10|               <time><%= post.time.minute %></time>
+    11|               <span class="label label-success">
+    12|                 <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+    13|               </span>
+
+Cannot read property 'minute' of undefined
+    at __stack.lineno (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:498)
+    at Array.forEach (native)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:195)
+    at eval (eval at <anonymous> (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:242:14), <anonymous>:31:3533)
+    at E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:255:15
+    at Object.exports.render (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:293:13)
+    at View.exports.renderFile [as engine] (E:\git-workspace\nodeBlog\node_modules\ejs\lib\ejs.js:323:20)
+    at View.render (E:\git-workspace\nodeBlog\node_modules\express\lib\view.js:76:8)
+    at Function.app.render (E:\git-workspace\nodeBlog\node_modules\express\lib\application.js:504:10)
+    at ServerResponse.res.render (E:\git-workspace\nodeBlog\node_modules\express\lib\response.js:798:7)

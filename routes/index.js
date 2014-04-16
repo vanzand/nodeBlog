@@ -4,6 +4,7 @@ var Post = require('../modules/post.js');
 var fs = require('fs');
 
 module.exports = function(app){
+
   app.get('/', function (req, res){
     var page = req.query.p ? parseInt(req.query.p) : 1,
       category = req.query.category || null,
@@ -13,12 +14,14 @@ module.exports = function(app){
       query.category = category;
     }
 
+    console.log('开始查找文章');
     Post.getTen(query, page, function (err, posts, total){
       if(err){
         posts = [];
       }
+      console.log('找到文章，开始返回');
       res.render('index', {
-        title:'范子冬的个人博客',
+        title : '范子冬的个人博客',
         posts : posts,
         page : page,
         category : category,
@@ -28,6 +31,7 @@ module.exports = function(app){
         success : req.flash('success').toString(),
         error : req.flash('error').toString()
       });
+      console.log('返回完毕');
     });
   });
 
@@ -440,6 +444,7 @@ module.exports = function(app){
 
   //当无法匹配路径时，调用404页面
   app.use(function (req, res){
+    console.log('未找到相应页面');
     res.render('404');
   });
 
