@@ -72,7 +72,7 @@ User.update = function(user, callback){
 	if(user.password){
 		updateObj.password = user.password;
 	}
-	console.log(updateObj);
+	console.log('updateObj.password='+updateObj.password);
 	userModel.update({
 		_id : user._id
 	}, {

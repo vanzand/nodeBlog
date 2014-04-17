@@ -38,9 +38,7 @@ app.use(express.session({
 	secret : setting.cookieSecret,
 	key : setting.db,
 	cookie : {maxAge : 1000 * 60 * 24 * 7},
-	store : new MongoStore({
-		db : setting.db
-	})
+	url : setting.url
 }));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -61,7 +59,7 @@ routes(app);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
-  mongoose.connect('mongodb://localhost/nodeBlog');
+  mongoose.connect(setting.url);
   //看是否已经初始化管理员，若未初始化则进行初始化操作
   User.get('admin', function (err, user){
   	if(user){

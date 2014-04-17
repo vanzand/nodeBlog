@@ -1,4 +1,3 @@
-var db = require('./db.js');
 var markdown = require('markdown').markdown;
 var ObjectID = require('mongodb').ObjectID;
 var mongoose = require('mongoose');

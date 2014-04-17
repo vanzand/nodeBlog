@@ -335,10 +335,9 @@ module.exports = function(app){
       new_password = req.body.new_password,
       confirm_password = req.body.confirm_password,
       md5 = crypto.createHash('md5');
-    console.log("old_password: " + old_password);
-    console.log("new_password: " + new_password);
     if(currentUser.password !== md5.update(old_password).digest('hex') ){
       req.flash('error', '用户密码错误！');
+      console.log('用户密码错误！');
       return res.redirect('back');
     }
     if(new_password !== confirm_password){
@@ -347,13 +346,15 @@ module.exports = function(app){
     }
     var new_password_md5 = crypto.createHash('md5').update(new_password).digest('hex');
     User.update({
-      name : currentUser.name,
+      _id : currentUser._id,
       password : new_password_md5
     }, function (err){
       if(err){
         req.flash('error', '修改密码失败！');
+        console.log('修改密码失败！');
         return res.redirect('back');
       }
+      console.log('修改密码成功！');
       currentUser.password = new_password_md5;
       res.redirect('/setting/password');
     });
