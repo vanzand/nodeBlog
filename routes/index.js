@@ -308,7 +308,7 @@ module.exports = function(app){
     var currentUser = req.session.user,
       email = req.body.email;
     User.update({
-      name : currentUser.name,
+      _id : currentUser._id,
       email : email
     }, function (err){
       if(err){
