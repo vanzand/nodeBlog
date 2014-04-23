@@ -69,9 +69,12 @@ Post.getTen = function(query, page, callback){
         return callback(err);
       }
       posts.forEach(function(post){
-        post.content = markdown.toHTML(post.content);
+        //post.content = markdown.toHTML(post.content);
         //获取文章的摘要
-        post.excerpt = post.content.substr(0, 500);
+        post.excerpt = '';
+        if(post.content){
+          post.excerpt = post.content.substr(0, 500);
+        }
         var lastP = post.excerpt.lastIndexOf('</p>');
         post.excerpt = post.excerpt.substr(0, lastP);
       });
@@ -91,9 +94,9 @@ Post.getOne = function(_id, changeToHtml, callback){
       }, function(err){
 
       });
-      if(changeToHtml===true){
+      /*if(changeToHtml===true){
         post.content = markdown.toHTML(post.content);
-      }
+      }*/
       callback(null, post);
     }else{
       callback(null, post);

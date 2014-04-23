@@ -19,7 +19,7 @@ module.exports = function(app){
       if(err){
         posts = [];
       }
-      console.log('找到文章，开始返回');
+      console.log('找到文章'+posts.length+'篇，开始返回');
       res.render('index', {
         title : '范子冬的个人博客',
         posts : posts,
@@ -140,6 +140,7 @@ module.exports = function(app){
 
   app.post('/management/addPost', checkLogin);
   app.post('/management/addPost', function (req, res){
+    console.log('开始保存文章');
     var post = {
       username : req.session.user.name,
       title : req.body.title,
