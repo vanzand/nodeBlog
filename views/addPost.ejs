@@ -27,15 +27,50 @@
                 <input type="text" name="tag2" class="form-control w200 inline-bolck"/>
                 <input type="text" name="tag3" class="form-control w200 inline-bolck"/>
               </div>
-              <div class="form-group">
+              <div id="editor"></div>
+              <input type="hidden" id="content" name="content">
+              <!-- <div class="form-group">
                 <label>正文</label>
                 <textarea name="content" class="form-control" row="20" style="height:300px;"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">发布</button>
+              </div> -->
+              <button type="submit" class="btn btn-primary" id="submit">发布</button>
             </form>
            </div>
          </div>
         </div>
       </div>
     </div>
-<%- include footer %>
+  <footer>
+  </footer>
+
+  <a id="gotop" href="#">   
+    <span>▲</span> 
+  </a>
+
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script src="/javascripts/summernote.min.js"></script>
+  
+  <script type="text/javascript">
+  $(function(){
+    $(window).scroll(function(){  //只要窗口滚动,就触发下面代码 
+      var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
+      if( scrollt >600 ){  //判断滚动后高度超过600px,就显示  
+        $("#gotop").fadeIn(400); //淡出     
+      }else{      
+        $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡入.必须加上stop()停止之前动画,否则会出现闪动   
+      }
+    });
+    $("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+        $("html,body").animate({scrollTop:"0px"},200);
+    });
+    $('#editor').summernote({
+      height : 300
+    });
+    $('#submit').click(function(){
+      $('#content').val($('#editor').code());
+    });
+  });
+  </script>
+</body>
+</html>

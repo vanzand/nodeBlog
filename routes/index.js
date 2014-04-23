@@ -141,6 +141,7 @@ module.exports = function(app){
   app.post('/management/addPost', checkLogin);
   app.post('/management/addPost', function (req, res){
     console.log('开始保存文章');
+    console.log(req.body.content);
     var post = {
       username : req.session.user.name,
       title : req.body.title,
@@ -167,12 +168,11 @@ module.exports = function(app){
     post.save(function(err){
       if(err){
         req.flash('error', '发布文章失败！')
-        return res.redirect('/post');
+        return res.redirect('/management/posts');
       }
       req.flash('success', '发布文章成功!');
-      res.redirect('/management');
+      res.redirect('/management/posts');
     });
-    res.redirect('/management/posts');
   });
 
   app.get('/management/editPost', checkLogin);
