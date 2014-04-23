@@ -75,8 +75,8 @@ Post.getTen = function(query, page, callback){
         if(post.content){
           post.excerpt = post.content.substr(0, 500);
         }
-        var lastP = post.excerpt.lastIndexOf('</p>');
-        post.excerpt = post.excerpt.substr(0, lastP);
+        //var lastP = post.excerpt.lastIndexOf('</p>');
+        //post.excerpt = post.excerpt.substr(0, lastP);
       });
       return callback(null, posts, total);
     });
