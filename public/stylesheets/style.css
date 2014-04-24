@@ -167,3 +167,12 @@ footer{
 }
 
 #editor {overflow:scroll; min-height:300px}
+
+.mainFooter {
+    background: url("/images/bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-top: 3px solid #77A6D2;
+    color: #FFFFFF;
+    margin: 40px 0 0;
+    padding: 20px;
+    text-align: center;
+}

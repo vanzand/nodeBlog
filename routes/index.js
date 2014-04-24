@@ -199,7 +199,6 @@ module.exports = function(app){
     //查看题图有没有被修改
     var titleImgPath = null,
       post = {
-      username : req.session.user.name,
       title : req.body.title,
       category : req.body.category,
       tags : [req.body.tag1, req.body.tag2, req.body.tag3],
