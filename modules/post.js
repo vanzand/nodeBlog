@@ -63,7 +63,8 @@ Post.getTen = function(query, page, callback){
     }
     postModel.find(query, null, {
       skip : (page-1) * 10,
-      limit : 10
+      limit : 10,
+      sort : {time : -1}
     }, function (err, posts){
       if(err){
         return callback(err);
@@ -75,8 +76,10 @@ Post.getTen = function(query, page, callback){
         if(post.content){
           post.excerpt = post.content.substr(0, 500);
         }
-        //var lastP = post.excerpt.lastIndexOf('</p>');
-        //post.excerpt = post.excerpt.substr(0, lastP);
+        /*var lastP = post.excerpt.lastIndexOf('\r\n');
+        if(lastP>0){
+          post.excerpt = post.excerpt.substr(0, lastP);
+        }*/
       });
       return callback(null, posts, total);
     });

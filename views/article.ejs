@@ -1,5 +1,6 @@
 <%- include header %>
-	<div class="container">
+
+    <div class="container mB50">
       <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1">
           <article class="post">
@@ -11,17 +12,32 @@
               </span>
               <span class="label label-success"><%= post.pv || 0 %>人阅读</span>
             </div>
-            <% if(post.titleImgPath != '') { %>
-            <img src="<%= post.titleImgPath %>">
-            <% } %>
-            <p><%- post.content %></p>
+            <div><%- post.content %></div>
           </article>
-
           <div id="comments">
-          <%- include comment %>
+            <div data-thread-key="<%= post._id %>" data-title="<%= post.title %>" data-category="<%= post.category %>" data-author-key="<%= post.username %>" class="ds-thread" id="ds-thread">
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-<%- include footer %>
+  </div>
+
+  <%- include footer %>
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"vanzand"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+
+  })();
+  </script> 
+
+  </body>
+</html>

@@ -1,7 +1,12 @@
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
   font-size: 1.6rem;
   background: none repeat scroll 0 0 #EDEDEF;
+  margin: 0;
 }
 
 a{
@@ -53,6 +58,17 @@ a:hover{
 
 .navbar-blue .navbar-toggle .icon-bar {
     background-color: #FFFFFF;
+}
+
+.wrapper{
+  height: auto;
+  margin: 0 auto -70px;
+  min-height: 100%;
+  padding: 0 0 60px;
+}
+
+.mB50{
+  margin-bottom: 50px;
 }
 
 article.post{
@@ -169,10 +185,10 @@ footer{
 #editor {overflow:scroll; min-height:300px}
 
 .mainFooter {
-    background: url("/images/bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border-top: 3px solid #77A6D2;
-    color: #FFFFFF;
-    margin: 40px 0 0;
-    padding: 20px;
-    text-align: center;
+  background: url("/images/bg.jpg") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  border-top: 3px solid #77A6D2;
+  color: #FFFFFF;
+  text-align: center;
+  height: 70px;
+  padding: 20px 0 0;
 }

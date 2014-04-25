@@ -1,5 +1,5 @@
 <%- include mgtHeader %>
-  <div class="container">
+  <div class="container mB50">
     <div class="panel panel-default">
       <div class="panel-heading">
         文章列表
@@ -43,6 +43,7 @@
       </div>
     </div>
   </div>
+  </div>
 
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -63,29 +64,9 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <footer>
-  </footer>
-
-  <a id="gotop" href="#">   
-    <span>▲</span> 
-  </a>
-
-  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
+<%- include footer %>
   <script type="text/javascript">
   $(function(){
-    $(window).scroll(function(){  //只要窗口滚动,就触发下面代码 
-      var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
-      if( scrollt >600 ){  //判断滚动后高度超过600px,就显示  
-        $("#gotop").fadeIn(400); //淡出     
-      }else{      
-        $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡入.必须加上stop()停止之前动画,否则会出现闪动   
-      }
-    });
-    $("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
-        $("html,body").animate({scrollTop:"0px"},200);
-    });
     $('.deleteBtn').bind('click', function(){
       $('#deleteConfirmBtn').attr('href', '/management/deletePost?_id='+$(this).prev().val());
     });
@@ -93,3 +74,7 @@
   </script>
 </body>
 </html>
+
+ 
+
+  

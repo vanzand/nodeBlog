@@ -1,7 +1,7 @@
 <%- include mgtHeader %>
-  <div class="contianer">
+  <div class="container">
     <div class="row">
-     <div class="col-xs-10 col-md-6 col-md-offset-2">
+      <div class="col-md-6 col-md-offset-2">
        <article class="post">
         <ul class="nav nav-tabs">
           <li class="active"><a href="/setting/baseInfo">基本资料</a></li>
@@ -27,16 +27,11 @@
           </div>
         </form>
        </article>
-     </div> 
+      </div>
     </div>
   </div>
-
-  <footer>
-  </footer>
-
-  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-  <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-  
+</div>
+<%- include footer %>
   <script type="text/javascript">
   $(function (e){
     $('#baseInfo_submit').bind('click', function(){
@@ -51,5 +46,6 @@
     }); 
   });
   </script>
+
 </body>
 </html>
