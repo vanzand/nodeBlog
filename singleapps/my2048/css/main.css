@@ -1,106 +1,112 @@
-.wrapper{
-    width: 500px;
-    margin: 0 auto;
+.wrapper {
+  width: 500px;
+  margin: 0 auto;
 }
-#titleMsg{
-    position: relative;
+#titleMsg {
+  position: relative;
 }
-.scoreDiv{
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 24px;
+.scoreDiv {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24px;
 }
-#game-container{
-    width: 500px;
-    height: 500px;
-    background: none repeat scroll 0 0 #999999;
-    border-radius: 5px;
-    position: relative;
-    padding: 20px;
+#game-container {
+  width: 500px;
+  height: 500px;
+  background: none repeat scroll 0 0 #999999;
+  border-radius: 5px;
+  position: relative;
+  padding: 20px;
 }
-#board-container{
-    z-index: 0;
-    position: absolute;
+#board-container {
+  z-index: 0;
+  position: absolute;
 }
-.board-row{
-    margin-bottom: 20px;
+.board-row {
+  margin-bottom: 20px;
 }
 .board-row:after {
-    clear: both;
-    content: "";
-    display: block;
+  clear: both;
+  content:"";
+  display: block;
 }
-.board-cell{
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-    background: none repeat scroll 0 0 #CDC1B4;
-    border-radius: 5px;
-    float: left;
+.board-cell {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  background: none repeat scroll 0 0 #CDC1B4;
+  border-radius: 5px;
+  float: left;
 }
-.board-cell:last-child{
-    margin-right: 0;
+.board-cell:last-child {
+  margin-right: 0;
 }
-#number-container{
-    position: absolute;
+#number-container {
+  position: absolute;
 }
-.num-cell{
-    position: absolute;
-    z-index: 2;
-    font-size: 44px;
-    font-weight: bolder;
-    text-align: center;
-    border-radius: 5px;
-    line-height: 100px;
-    color: #ffffff;
+.num-cell {
+  position: absolute;
+  z-index: 2;
+  font-size: 44px;
+  font-weight: bolder;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 100px;
+  color: #ffffff;
+  -webkit-transition: 100ms ease-in-out;
+  -moz-transition: 100ms ease-in-out;
+  transition: 100ms ease-in-out;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  animation: 200ms ease 100ms normal backwards 1 pop;
 }
-
 /*  算出每个文字格子应该的偏移,横纵方向每隔一个的偏移都是120 */
-#num_cell_0_1{
-    transform: translate(120px, 0);
+ .num_cell_0_1 {
+  transform: translate(120px, 0);
 }
-#num_cell_0_2{
-    transform: translate(240px, 0);
+.num_cell_0_2 {
+  transform: translate(240px, 0);
 }
-#num_cell_0_3{
-    transform: translate(360px, 0);
+.num_cell_0_3 {
+  transform: translate(360px, 0);
 }
-#num_cell_1_0{
-    transform: translate(0, 120px);
+.num_cell_1_0 {
+  transform: translate(0, 120px);
 }
-#num_cell_1_1{
-    transform: translate(120px, 120px);
+.num_cell_1_1 {
+  transform: translate(120px, 120px);
 }
-#num_cell_1_2{
-    transform: translate(240px, 120px);
+.num_cell_1_2 {
+  transform: translate(240px, 120px);
 }
-#num_cell_1_3{
-    transform: translate(360px, 120px);
+.num_cell_1_3 {
+  transform: translate(360px, 120px);
 }
-#num_cell_2_0{
-    transform: translate(0, 240px);
+.num_cell_2_0 {
+  transform: translate(0, 240px);
 }
-#num_cell_2_1{
-    transform: translate(120px,  240px);
+.num_cell_2_1 {
+  transform: translate(120px, 240px);
 }
-#num_cell_2_2{
-    transform: translate(240px,  240px);
+.num_cell_2_2 {
+  transform: translate(240px, 240px);
 }
-#num_cell_2_3{
-    transform: translate(360px,  240px);
+.num_cell_2_3 {
+  transform: translate(360px, 240px);
 }
-#num_cell_3_0{
-    transform: translate(0, 360px);
+.num_cell_3_0 {
+  transform: translate(0, 360px);
 }
-#num_cell_3_1{
-    transform: translate(120px,  360px);
+.num_cell_3_1 {
+  transform: translate(120px, 360px);
 }
-#num_cell_3_2{
-    transform: translate(240px,  360px);
+.num_cell_3_2 {
+  transform: translate(240px, 360px);
 }
-#num_cell_3_3{
-    transform: translate(360px,  360px);
+.num_cell_3_3 {
+  transform: translate(360px, 360px);
 }
 /*
 .num-cell{
