@@ -48,13 +48,7 @@
 .num-cell {
   position: absolute;
   z-index: 2;
-  font-size: 44px;
-  font-weight: bolder;
-  text-align: center;
   border-radius: 5px;
-  line-height: 100px;
-  background-color: #3c3a32;
-  color: #000000;
   width: 100px;
   height: 100px;
   -webkit-transition: 100ms ease-in-out;
@@ -63,42 +57,56 @@
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   transition-property: transform;
-  
 }
-.num_cell_8, .num_cell_16, .num_cell_32, .num_cell_64, .num_cell_128, .num_cell_256, .num_cell_512, .num_cell_1024, .num_cell_2048{
-  color: #f9f6f2;
+.num_cell_inner{
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  font-size: 44px;
+  font-weight: bolder;
+  text-align: center;
+  line-height: 100px;
 }
-.num_cell_2{
+.num_cell_2 .num_cell_inner{
   background-color: #eee4da;
 }
-.num_cell_4{
+.num_cell_4 .num_cell_inner{
   background-color: #ede0c8;
 }
-.num_cell_8{
+.num_cell_8 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #f2b179;
 }
-.num_cell_16{
+.num_cell_16 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #f59563;
 }
-.num_cell_32{
+.num_cell_32 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #f67c5f;
 }
-.num_cell_64{
+.num_cell_64 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #f65e3b;
 }
-.num_cell_128{
+.num_cell_128 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #edcf72;
 }
-.num_cell_256{
+.num_cell_256 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #edcc61;
 }
-.num_cell_512{
+.num_cell_512 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #edc850;
 }
-.num_cell_1024{
+.num_cell_1024 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #edc53f;
 }
-.num_cell_2048{
+.num_cell_2048 .num_cell_inner{
+  color: #f9f6f2;
   background-color: #edc22e;
 }
 /*  算出每个文字格子应该的偏移,横纵方向每隔一个的偏移都是120 */
@@ -177,10 +185,13 @@
   -webkit-transform: translate(360px, 360px);
   transform: translate(360px, 360px);
 }
-.num_cell_new {
+.num_cell_new .num_cell_inner{
   -webkit-animation: appear 200ms ease 100ms;
   -moz-animation: appear 200ms ease 100ms;
   animation: appear 200ms ease 100ms;
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
 }
 @-webkit-keyframes appear {
   0% {
@@ -224,10 +235,13 @@
     transform: scale(1);
   }
 }
-.num_cell_merged{
-  -webkit-animation: pop 200ms ease 100ms;
-  -moz-animation: pop 200ms ease 100ms;
-  animation: pop 200ms ease 100ms;
+.num_cell_merged .num_cell_inner{
+  -webkit-animation: appear 200ms ease 100ms;
+  -moz-animation: appear 200ms ease 100ms;
+  animation: appear 200ms ease 100ms;
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
 }
 @-webkit-keyframes pop {
   0% {
