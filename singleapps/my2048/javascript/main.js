@@ -64,6 +64,8 @@ $(function() {
   my2048.show = function() {
     var board = this.board,
       specialClass = this.specialClass;
+
+    //一次遍历完后再做插入操作
     window.requestAnimationFrame(function() {
       for (var x = 0; x <= 3; x++) {
         for (var y = 0; y <= 3; y++) {
@@ -78,16 +80,17 @@ $(function() {
   }
 
   my2048.showOneNumber = function(x, y, number, specialClass) {
-    var numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + x + '_' + y];
+    var numContainer = document.querySelector('#number-container'),
+      cellDiv = document.querySelector('#num_cell_'+x+'_'+y),
+      cellInnerDiv = document.querySelector('#num_cell_inner_'+x+'_'+y),
+      numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + x + '_' + y];
     if (specialClass === 1) {
       numCellClass.push('num_cell_new');
     } else if (specialClass === 2) {
       numCellClass.push('num_cell_merged');
     }
-    var _div = document.createElement('div');
-    _div.setAttribute('class', numCellClass.join(' '));
-    _div.innerHTML = number;
-    document.getElementById('number-container').appendChild(_div);
+    cellDiv.setAttribute('class', numCellClass.join(' '));
+    cellInnerDiv.textContent = number;
   }
 
   my2048.init();
