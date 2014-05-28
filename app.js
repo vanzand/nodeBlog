@@ -37,7 +37,7 @@ app.use(express.bodyParser({ keepExtensions: true, uploadDir: './public/images' 
 app.use(express.session({
 	secret : setting.cookieSecret,
 	key : setting.db,
-	cookie : {maxAge : 1000 * 60 * 24 * 7},
+	cookie : {maxAge : 60000 * 60 * 24 * 7},
 	url : setting.url
 }));
 app.use(app.router);

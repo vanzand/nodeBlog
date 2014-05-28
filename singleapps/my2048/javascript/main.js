@@ -2,6 +2,12 @@ $(function() {
   var my2048 = {
     score: 0,
     highScore : 0,
+    formBoard : [
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null]
+    ],
     board: [
       [0, 0, 0, 0],
       [0, 0, 0, 0],
@@ -30,6 +36,12 @@ $(function() {
       [0, 0, 0, 0],
       [0, 0, 0, 0]
     ];
+    this.formBoard = [
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null]
+    ];
     //初始化两个数字
     this.addRandomNumber();
     this.addRandomNumber();
@@ -45,6 +57,11 @@ $(function() {
         my2048.move(direction);
       }
     });
+    //绑定屏幕滑动事件
+    var touchstart, touchend;
+    $(document).bind('touchstart', function(e){
+
+    });
     //展示
     this.show();
   }
@@ -55,6 +72,12 @@ $(function() {
       [0, 0, 0, 0],
       [0, 0, 0, 0],
       [0, 0, 0, 0]
+    ];
+    this.formBoard = [
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null]
     ];
     //移动时判断每个元素是否能移动是从目的方向开始的，向左的时候列方向是正序，向右列方向是反序,向上的时候横方向是正序，向下的时候横方向是反序
     var xList = [0, 1, 2, 3], yList = [0, 1, 2, 3];
@@ -75,6 +98,8 @@ $(function() {
           //找到每个非零元素应该移动到的位置
           var targetCell = my2048.findMovedTarget(x, y, direction, board[x][y], mergedCell);
           if(targetCell.x!==x || targetCell.y !==y){
+            //记录每个元素移动后的之前位置
+            my2048.formBoard[targetCell.x][targetCell.y] = {x:x, y:y};
             moved = true;
             //进行数字的更新
             if(board[targetCell.x][targetCell.y]){
@@ -213,11 +238,26 @@ $(function() {
     var numContainer = document.querySelector('#number-container'),
       cellDiv = document.createElement('div'),
       cellInnerDiv = document.createElement('div'),
-      numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + x + '_' + y];
+      numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + x + '_' + y],
+      perviousPostion = my2048.formBoard[x][y];
     if (specialClass === 1) {
       numCellClass.push('num_cell_new');
     } else if (specialClass === 2) {
-      numCellClass.push('num_cell_merged');
+      if(perviousPostion){
+        numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + perviousPostion.x + '_' + perviousPostion.y];
+      }
+      window.requestAnimationFrame(function(){
+        numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + x + '_' + y];
+        numCellClass.push('num_cell_merged');
+        cellDiv.setAttribute('class', numCellClass.join(' '));
+      });
+    } else if(perviousPostion){
+      numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + perviousPostion.x + '_' + perviousPostion.y];
+      window.requestAnimationFrame(function(){
+        //$('.num_cell_' + perviousPostion.x + '_' + perviousPostion.y).addClass('num_cell_' + x + '_' + y);
+        numCellClass = ['num-cell', 'num_cell_' + number, 'num_cell_' + x + '_' + y];
+        cellDiv.setAttribute('class', numCellClass.join(' '));
+      });
     }
     cellInnerDiv.classList.add('num_cell_inner');
     cellInnerDiv.textContent = number;

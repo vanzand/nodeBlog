@@ -110,7 +110,7 @@
   background-color: #edc22e;
 }
 /*  算出每个文字格子应该的偏移,横纵方向每隔一个的偏移都是120 */
- .num_cell_0_1 {
+.num_cell_0_1 {
   -moz-transform: translate(120px, 0);
   -webkit-transform: translate(120px, 0);
   transform: translate(120px, 0);
@@ -294,19 +294,116 @@
     transform: scale(1);
   }
 }
-/*
-.num-cell{
-    position: absolute;
-    color: #ffffff;
-    background-color: #eee4da;
-    font-size: 44px;
+@media screen and (max-width: 520px){
+  .wrapper {
+    width: 300px;
+  }
+  .scoreDiv {
+    font-size: 12px;
+  }
+  #game-container {
+    width: 300px;
+    height: 300px;
+    padding: 4px;
+  }
+  .board-row {
+    margin-bottom: 4px;
+  }
+  .board-cell {
+    width: 70px;
+    height: 70px;
+    margin-right: 4px;
+  }
+  .num-cell {
+    width: 70px;
+    height: 70px;
+  }
+  .num_cell_inner{
+    width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    font-size: 28px;
     font-weight: bolder;
     text-align: center;
-    border-radius: 5px;
-    line-height: 100px;
-    z-index: 10;
+    line-height: 70px;
+  }
+  .num_cell_0_1 {
+    -moz-transform: translate(74px, 0);
+    -webkit-transform: translate(74px, 0);
+    transform: translate(74px, 0);
+  }
+  .num_cell_0_2 {
+    -moz-transform: translate(148px, 0);
+    -webkit-transform: translate(148px, 0);
+    transform: translate(148px, 0);
+  }
+  .num_cell_0_3 {
+    -moz-transform: translate(222px, 0);
+    -webkit-transform: translate(222px, 0);
+    transform: translate(222px, 0);
+  }
+  .num_cell_1_0 {
+    -moz-transform: translate(0, 74px);
+    -webkit-transform: translate(0, 74px);
+    transform: translate(0, 74px);
+  }
+  .num_cell_1_1 {
+    -moz-transform: translate(74px, 74px);
+    -webkit-transform: translate(74px, 74px);
+    transform: translate(74px, 74px);
+  }
+  .num_cell_1_2 {
+    -moz-transform: translate(148px, 74px);
+    -webkit-transform: translate(148px, 74px);
+    transform: translate(148px, 74px);
+  }
+  .num_cell_1_3 {
+    -moz-transform: translate(222px, 74px);
+    -webkit-transform: translate(222px, 74px);
+    transform: translate(222px, 74px);
+  }
+  .num_cell_2_0 {
+    -moz-transform: translate(0, 148px);
+    -webkit-transform: translate(0, 148px);
+    transform: translate(0, 148px);
+  }
+  .num_cell_2_1 {
+    -moz-transform: translate(74px, 148px);
+    -webkit-transform: translate(74px, 148px);
+    transform: translate(74px, 148px);
+  }
+  .num_cell_2_2 {
+    -moz-transform: translate(148px, 148px);
+    -webkit-transform: translate(148px, 148px);
+    transform: translate(148px, 148px);
+  }
+  .num_cell_2_3 {
+    -moz-transform: translate(222px, 148px);
+    -webkit-transform: translate(222px, 148px);
+    transform: translate(222px, 148px);
+  }
+  .num_cell_3_0 {
+    -moz-transform: translate(0, 222px);
+    -webkit-transform: translate(0, 222px);
+    transform: translate(0, 222px);
+  }
+  .num_cell_3_1 {
+    -moz-transform: translate(74px, 222px);
+    -webkit-transform: translate(74px, 222px);
+    transform: translate(74px, 222px);
+  }
+  .num_cell_3_2 {
+    -moz-transform: translate(148px, 222px);
+    -webkit-transform: translate(148px, 222px);
+    transform: translate(148px, 222px);
+  }
+  .num_cell_3_3 {
+    -moz-transform: translate(222px, 222px);
+    -webkit-transform: translate(222px, 222px);
+    transform: translate(222px, 222px);
+  }
 }
-
+/*
 @media screen and (max-width: 520px){
     .topMessage{
         width: 300px;
