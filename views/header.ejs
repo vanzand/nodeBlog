@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
   <head>
     <meta  http-equiv="content-type" content="text/html; charset=utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +8,7 @@
     <meta charset="UTF-8" >
     <title><%= title %></title>
     <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" id="fontawesome-css" href="/font-awesome/css/font-awesome.min.css" type="text/css" media="all">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -20,12 +21,35 @@
   
   <body>
     <div class="wrapper">
-      <header class="navbar" role="banner">
+      <header>
+        <div class="header">
+          <div class="logo animation" data-toggle="animation"></div>
+        </div>
+        <nav class="navbar navbar-inverse">
+          <div class="container clearfix">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="menu-item"><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                <li class="menu-item"><a href="/?category=program"><i class="fa fa-code"></i>编程</a></li>
+                <li class="menu-item"><a href="/?category=study"><i class="fa fa-book"></i>读书</a></li>
+                <li class="menu-item"><a href="/about"><i class="fa fa-user"></i>关于我</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!-- <header class="navbar" role="banner">
         <nav class="navbar navbar-blue navbar-fixed-top" role="navigation">
           <div class="container">
             <div class="row">
               <div class="col-xs-12 col-md-10 col-md-offset-1">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                 Brand and toggle get grouped for better mobile display 
                 <div class="navbar-header">
                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -36,16 +60,16 @@
                   <a class="navbar-brand" href="/">七淅</a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                 Collect the nav links, forms, and other content for toggling 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="/?category=program">编程</a></li>
                     <li><a href="/?category=study">读书</a></li>
                     <li><a href="/about">关于我</a></li>
                   </ul>
-                </div><!-- /.navbar-collapse -->
+                </div>/.navbar-collapse 
               </div>
             </div>
           </div>
         </nav>
-      </header>
+      </header> -->

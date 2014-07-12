@@ -2,27 +2,60 @@
   <!-- 遍历列出最近的文章 -->
     <div class="container mB50">
       <div class="row">
-        <div class="col-xs-12 col-md-10 col-md-offset-1">
+        <!-- 文章显示区域 -->
+        <section class="col-xs-12 col-md-8">
           <% posts.forEach(function (post, index){ %>
-            <article class="post">
-              <h2><a href="/p/<%= post._id %>"><%= post.title %></a></h2>
-              <div class="meta">
-                <time><%= post.time.minute %></time>
-                <span class="label label-success">
-                  <a href="#"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
+            <!-- PC端设备文章显示 -->
+            <article class="post visible-md visible-lg">
+              <span class="label post-label"><%= post.category %></span>
+              <h3><a href="/p/<%= post._id %>"><%= post.title %></a></h3>
+              <hr>
+              <!-- 根据该文章是否有缩略图来输出不同的布局 -->
+              <% if(post.titleImgPath != '') { %>
+              <div class="row">
+                <div class="col-md-5">
+                  <figure class="thumbnail zan-thumb"><a href="/p/<%= post._id %>"><img src="<%= post.titleImgPath %>" class="img-thumbnail" alt=""></a></figure>  
+                </div>            
+                <div class="col-md-7 visible-lg post-line"><%- post.excerpt %></div>
+              </div>
+              <% } else { %>
+              <div class="row">
+                <div class="col-md-12 post-line"><%- post.excerpt %></div>
+              </div> 
+              <% } %>
+              <hr>
+              <div class="pull-right post-info">
+                <span><i class="fa fa-calendar"></i><%= post.time.minute %></span>
+                <!-- <span><i class="fa fa-user"></i> <?php the_author_posts_link(); ?></span> -->
+                <span><i class="fa fa-eye"></i><%= post.pv || 0 %></span>
+                <span>
+                  <i class="fa fa-comment"></i> 
+                  <a href="/p/<%= post._id %>#comments"><span class="ds-thread-count" data-thread-key="<%= post._id %>" data-count-type="comments"></span></a>
                 </span>
-                <span class="label label-success"><%= post.pv || 0 %>人阅读</span>
               </div>
-              <div class="content">
+            </article> 
+            <!-- PC端设备文章显示结束 -->
+            <!-- 移动端设备文章显示 -->
+            <article class="visible-xs  visible-sm">
+              <div class="title-article">
+                <h4><a href="/p/<%= post._id %>"><%= post.title %></a></h4>
+              </div>
+              <p class="post-info">
+                <span><i class="fa fa-calendar"></i><%= post.time.minute %></span>
+                <span><i class="fa fa-eye"></i><%= post.pv || 0 %></span>
+              </p>
+              <div class="content-article">
+                <!-- 根据该文章是否有缩略图来输出不同的布局 -->
                 <% if(post.titleImgPath != '') { %>
-                <img src="<%= post.titleImgPath %>" class="img-thumbnail" alt="">
+                  <figure class="thumbnail"><a href="/p/<%= post._id %>"><img src="<%= post.titleImgPath %>" class="img-thumbnail" alt=""></a></figure>  
                 <% } %>
-                <p><%- post.excerpt %></p>
+                <div class="well"><%- post.excerpt %></div>
               </div>
-              <div>
-                <a href="/p/<%= post._id %>" class="btn btn-primary">阅读全文</a>
-              </div>
-            </article>
+              <a class="btn btn-zan-line-pp btn-block" href="/p/<%= post._id %>"  title="详细阅读 <?php the_title(); ?>">阅读全文 
+                <span class="badge"><%= post.pv || 0 %></span>
+              </a>
+            </article> 
+            <!-- 移动端设备文章显示结束 -->
           <% }); %>
           <% if( !isFirstPage || !isLastPage) { %>
           <article class="post">
@@ -40,11 +73,108 @@
             </ul>
           </article>
           <% } %>
-          <article></article>
-        </div>
+        </section><!-- 文章显示区域结束 -->
+
+        <!-- side section -->
+        <aside class="col-xs-12 col-md-4">
+          <!-- 最热门文章 -->
+          <div class="panel panel-van hidden-xs">
+            <div class="panel-heading">最热文章</div>
+            <div class="panel-body">
+              <ul class="list-group">
+                <li class="list-group-item clearfix">
+                  <figure class="thumbnail thumbnail-van">
+                    <img width="75" height="75" src="/images/logo.jpg" alt="img-1">
+                  </figure>
+                  <a href=""><h5>热门文章1</h5></a>
+                  <div class="sidebar-info">
+                    <span><i class="fa fa-calendar"></i><span class="pL5">2014-07-12</span></span>
+                    <span><i class="fa fa-comment"></i> <a href="">14</a></span>
+                  </div>
+                </li>
+                <li class="list-group-item clearfix">
+                  <figure class="thumbnail thumbnail-van">
+                    <img width="75" height="75" src="/images/logo.jpg" alt="img-1">
+                  </figure>
+                  <a href=""><h5>热门文章1</h5></a>
+                  <div class="sidebar-info">
+                    <span><i class="fa fa-calendar"></i><span class="pL5">2014-07-12</span></span>
+                    <span><i class="fa fa-comment"></i> <a href="">14</a></span>
+                  </div>
+                </li>
+                <li class="list-group-item clearfix">
+                  <figure class="thumbnail thumbnail-van">
+                    <img width="75" height="75" src="/images/logo.jpg" alt="img-1">
+                  </figure>
+                  <a href=""><h5>热门文章1</h5></a>
+                  <div class="sidebar-info">
+                    <span><i class="fa fa-calendar"></i><span class="pL5">2014-07-12</span></span>
+                    <span><i class="fa fa-comment"></i> <a href="">14</a></span>
+                  </div>
+                </li>
+                <li class="list-group-item clearfix">
+                  <figure class="thumbnail thumbnail-van">
+                    <img width="75" height="75" src="/images/logo.jpg" alt="img-1">
+                  </figure>
+                  <a href=""><h5>热门文章1</h5></a>
+                  <div class="sidebar-info">
+                    <span><i class="fa fa-calendar"></i><span class="pL5">2014-07-12</span></span>
+                    <span><i class="fa fa-comment"></i> <a href="">14</a></span>
+                  </div>
+                </li>
+              </ul>  
+            </div>
+        </div><!-- end of 最热门文章 -->
+
+        <!-- 最新评论 -->
+        <div class="panel panel-van hidden-xs">
+          <div class="panel-heading">最新评论</div>
+          <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item clearfix">
+                <div class="sidebar-avatar">
+                  <img alt="" src="http://1.gravatar.com/avatar/384adf1ac9ae8ed2b4bcc96dbbff2bf8?s=75&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D75&amp;r=G" class="avatar avatar-75 photo" height="75" width="75">
+                </div>
+                <h5>发表于：<a href="">热门文章1</a></h5>
+                <div class="sidebar-comment">
+                  <a href="">非常感谢分享</a>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <div class="sidebar-avatar">
+                  <img alt="" src="http://1.gravatar.com/avatar/384adf1ac9ae8ed2b4bcc96dbbff2bf8?s=75&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D75&amp;r=G" class="avatar avatar-75 photo" height="75" width="75">
+                </div>
+                <h5>发表于：<a href="">热门文章1</a></h5>
+                <div class="sidebar-comment">
+                  <a href="">非常感谢分享</a>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <div class="sidebar-avatar">
+                  <img alt="" src="http://1.gravatar.com/avatar/384adf1ac9ae8ed2b4bcc96dbbff2bf8?s=75&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D75&amp;r=G" class="avatar avatar-75 photo" height="75" width="75">
+                </div>
+                <h5>发表于：<a href="">热门文章1</a></h5>
+                <div class="sidebar-comment">
+                  <a href="">非常感谢分享</a>
+                </div>
+              </li>
+              <li class="list-group-item clearfix">
+                <div class="sidebar-avatar">
+                  <img alt="" src="http://1.gravatar.com/avatar/384adf1ac9ae8ed2b4bcc96dbbff2bf8?s=75&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D75&amp;r=G" class="avatar avatar-75 photo" height="75" width="75">
+                </div>
+                <h5>发表于：<a href="">热门文章1</a></h5>
+                <div class="sidebar-comment">
+                  <a href="">非常感谢分享</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div><!-- end of 最新评论 -->
+        
+        </aside>
       </div>
-    </div>
-  </div>
+    </div><!-- end of main container -->
+  </div><!-- end of wrapper -->
 
   <%- include footer %>
   
